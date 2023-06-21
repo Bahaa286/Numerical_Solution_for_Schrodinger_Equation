@@ -1,0 +1,5 @@
+schroodinger_1d
+plot_states_harmonicOscillator
+plot_states_particleInBox
+plot_states_potentialParier;
+plot_states_diracDeltaPotential;

@@ -1,0 +1,7 @@
+function psi = psi_0_parier(x)
+if x > -5 && x < 5
+    psi = cos((x+10)*pi/10)/sqrt(5.05e4);
+else
+    psi=10*sin((x+5)*pi/10)/sqrt(5.);
+end
+end

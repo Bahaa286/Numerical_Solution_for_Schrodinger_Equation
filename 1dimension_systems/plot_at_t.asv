@@ -1,0 +1,36 @@
+% plot the time 
+
+switch type
+    case 1
+        psi_0 = @(x) (psi_0_oscillator(x)); % psi(t=0) potential oscillator
+    case 2
+        psi_0 = @(x) (psi_0_box(x)); % psi(t=0) particle in a box
+    case 3
+        psi_0 = @(x) (psi_0_parier(x)); % psi(t=0) potential parier
+    case 4
+        psi_0 = @(x) (psi_0_delta(x)); % psi(t=0) potential dirac delta
+end
+
+%determine psi from the combination at time t
+
+%psi initial
+x = x0:dx:xN-dx;
+psi_i = [];
+for i = 1:N
+    psi_i(1,i) = psi_0(x0+i*dx);
+end
+
+psi = [];
+psi(N,1)=0;
+c = psin' * psi_i';
+
+for i = 1:N
+    psi = psi + c(i,1)*psin(:,i)*exp(-j*t*En(i,i)/h_bar);
+end
+psi = power(abs(psi),2)/dx;
+
+plot(x,psi);
+
+title(strcat('wave function at t=',string(t)));
+xlabel('x');
+ylabel('psi');
